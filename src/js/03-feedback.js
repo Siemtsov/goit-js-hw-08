@@ -3,10 +3,9 @@ const form = document.querySelector('.feedback-form');
 const email = document.querySelector('input[name="email"]');
 const message = document.querySelector('textarea[name="message"]');
 const dataName = 'feedback-form-state';
-if (JSON.parse(localStorage.getItem(dataName)) != undefined) {
-  setItems();
-}
+
 form.addEventListener('input', throttle(handlerSave, 500));
+document.addEventListener('DOMContentLoaded', loadingConten);
 form.addEventListener('submit', handlerSubmit);
 
 function handlerSave() {
@@ -18,11 +17,14 @@ function handlerSave() {
 }
 function handlerSubmit(evt) {
   evt.preventDefault();
-  email.value = null;
-  message.value = null;
+  email.value = '';
+  message.value = '';
 }
-function setItems() {
-  const pasteData = JSON.parse(localStorage.getItem(dataName));
-  email.value = pasteData.email;
-  message.value = pasteData.message;
+
+function loadingConten() {
+  const inputValues = JSON.parse(localStorage.getItem(dataName));
+  if (inputValues) {
+    email.value = inputValues.email;
+    message.value = inputValues.message;
+  }
 }
