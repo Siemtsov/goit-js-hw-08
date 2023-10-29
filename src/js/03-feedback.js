@@ -29,7 +29,7 @@ function handlerSubmit(evt) {
 function loadingConten() {
   const inputValues = JSON.parse(localStorage.getItem(dataName));
   if (inputValues) {
-    email.value = inputValues.email;
-    message.value = inputValues.message;
+    email.value = inputValues.email || '';
+    message.value = inputValues.message || '';
   }
 }
