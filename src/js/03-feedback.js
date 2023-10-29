@@ -19,6 +19,11 @@ function handlerSubmit(evt) {
   evt.preventDefault();
   email.value = '';
   message.value = '';
+
+  const feedbackState = JSON.parse(localStorage.getItem('feedback-form-state'));
+  console.log('Form submitted with feedback:', feedbackState);
+
+  localStorage.removeItem(dataName);
 }
 
 function loadingConten() {
